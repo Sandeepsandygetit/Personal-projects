@@ -1,9 +1,9 @@
-import qrcode
-from PIL import Image, ImageDraw
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
-qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_H,
-                 box_size= 10, border=4)
-qr.add_data("https://www.facebook.com/sandy.singh.944023")
-qr.make(fit=True)
-img=qr.make_image()
-img.save("My_profile_qrcode.png")
+CHROMEDRIVER_PATH=r"C:\Users\intel\Documents\tinal_ticket project\chromedriver"
+driver=webdriver.Chrome(executable_path=CHROMEDRIVER_PATH)
+driver.get("https://indianexpress.com/article/india/adhir-ranjan-chowdhury-apology-president-droupadi-murmu-rashtrapatni-remark-8059550/")
+
+title=driver.find_element(By.CLASS,"native_story_title")
+print(title)
